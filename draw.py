@@ -2,18 +2,60 @@ from display import *
 from matrix import *
 from math import *
 
+
+#Draw all 12 edges of a box/rectangular prism
 def add_box( points, x, y, z, width, height, depth ):
-    pass
+    add_edge(points, x, y, z, x + width, y, z)
+    add_edge(points, x, y, z, x, y - height, z)
+    add_edge(points, x, y, z, x, y, z - depth)
+    add_edge(points, x + width, y, z, x + width, y - height, z)
+
+    add_edge(points, x + width, y, z, x + width, y, z - depth)
+    add_edge(points, x, y - height, z, x + width, y - height, z)
+    add_edge(points, x, y - height, z, x, y - height, z - depth)
+    add_edge(points, x, y, z - depth, x + width, y, z - depth)
+
+    add_edge(points, x, y, z - depth, x, y - height, z - depth)
+    add_edge(points, x + width, y - height, z, x + width, y - height, z - depth)
+    add_edge(points, x, y - height, z - depth, x + width, y - height, z - depth)
+    add_edge(points, x + width, y, z - depth, x + width, y - height, z - depth)
+
 
 def add_sphere( points, cx, cy, cz, r, step ):
-    pass
+    sphere = generate_sphere(points, cx, cy, cz, r, step)
+    for cors in sphere:
+        add_edge(points, cors[0], cors[1], cors[2], cors[0], cors[1], cors[2])
+
+    
 def generate_sphere( points, cx, cy, cz, r, step ):
-    pass
+    matr = new_matrix()
+    for i in range(step+1):
+        for j in range(step+1):
+            alpha = float(j) * math.pi / step
+            beta = 2 * float(i) * math.pi  / step
+            x = r*math.cos(alpha) + cx
+            y = r*math.sin(alpha)*math.cos(beta) + cy
+            z = r*math.sin(alpha)*math.sin(beta) + cz
+            add_point(matr, x, y, z)
+    return matr
 
 def add_torus( points, cx, cy, cz, r0, r1, step ):
-    pass
+    torus = generate_torus(points, cx, cy, cz, r0, r1, step)
+    for cors in torus:
+        add_edge(points, cors[0], cors[1], cors[2], cors[0], cors[1], cors[2])
+
+        
 def generate_torus( points, cx, cy, cz, r0, r1, step ):
-    pass
+    matr=new_matrix()
+    for i in range(step+1):
+        for j in range(step+1):
+            alpha = 2 * float(j) * math.pi / step
+            beta = 2 * float(i) * math.pi / step
+	    x = (r0 * math.cos(alpha) + r1) * math.cos(beta) + cx
+	    y = r0 * math.sin(alpha) + cy
+	    z = (r0 * math.cos(alpha) + r1) * -1 * math.sin(beta) + cz
+	    add_point(matr, x, y, z)  
+    return matr
 
 def add_circle( points, cx, cy, cz, r, step ):
     x0 = r + cx

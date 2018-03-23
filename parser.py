@@ -44,7 +44,8 @@ The file follows the following format:
 
 See the file script for an example of the file format
 """
-ARG_COMMANDS = [ 'line', 'scale', 'move', 'rotate', 'save', 'circle', 'bezier', 'hermite' ]
+
+ARG_COMMANDS = [ 'line', 'scale', 'move', 'rotate', 'save', 'circle', 'bezier', 'hermite', 'box', 'sphere', 'torus' ]
 
 def parse_file( fname, edges, transform, screen, color ):
 
@@ -83,6 +84,33 @@ def parse_file( fname, edges, transform, screen, color ):
                       float(args[0]), float(args[1]), float(args[2]),
                       float(args[3]), float(args[4]), float(args[5]) )
 
+            
+        #NEW CODE INCOMING
+        #step is already defined above
+
+        #add_box( points, x, y, z, width, height, depth ):
+        elif line == 'box':
+            add_box(edges,
+                    float(args[0]), float(args[1]), float(args[2]),
+                    float(args[3]), float(args[4]), float(args[5]) )
+
+        #add_sphere( points, cx, cy, cz, r, step ):
+        elif line == 'sphere':
+            add_sphere(edges,
+                       float(args[0]), float(args[1]),
+                       float(args[2]), float(args[3]), step)
+
+        #add_torus( points, cx, cy, cz, r0, r1, step ):
+        elif line == 'torus':
+            add_torus(edges,
+                      float(args[0]), float(args[1]), float(args[2]),
+                      float(args[3]), float(args[4]), step)
+        #clear
+         elif line == 'clear':
+            edges = new_matrix()
+        #END OF INCOMING NEW CODE
+
+        
         elif line == 'scale':
             #print 'SCALE\t' + str(args)
             t = make_scale(float(args[0]), float(args[1]), float(args[2]))
