@@ -1,0 +1,95 @@
+torus
+250 250 0 50 200
+ident
+move
+-250 -250 0
+rotate
+z 20
+move
+250 250 0
+apply
+torus
+250 250 0 50 200
+ident
+move
+-250 -250 0
+rotate
+z 20
+move
+250 250 0
+apply
+torus
+250 250 0 50 200
+ident
+move
+-250 -250 0
+rotate
+z 20
+move
+250 250 0
+apply
+torus
+250 250 0 50 200
+ident
+move
+-250 -250 0
+rotate
+z 20
+move
+250 250 0
+apply
+torus
+250 250 0 50 200
+ident
+move
+-250 -250 0
+rotate
+z 20
+move
+250 250 0
+apply
+torus
+250 250 0 50 200
+ident
+move
+-250 -250 0
+rotate
+z 20
+move
+250 250 0
+apply
+torus
+250 250 0 50 200
+ident
+move
+-250 -250 0
+rotate
+z 20
+move
+250 250 0
+apply
+torus
+250 250 0 50 200
+ident
+move
+-250 -250 0
+rotate
+z 20
+move
+250 250 0
+apply
+torus
+250 250 0 50 200
+ident
+move
+-250 -250 0
+rotate
+z 20
+move
+250 250 0
+apply
+
+
+display
+save
+pic.png
