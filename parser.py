@@ -106,7 +106,7 @@ def parse_file( fname, edges, transform, screen, color ):
                       float(args[0]), float(args[1]), float(args[2]),
                       float(args[3]), float(args[4]), step)
         #clear
-         elif line == 'clear':
+        elif line == 'clear':
             edges = new_matrix()
         #END OF INCOMING NEW CODE
 
